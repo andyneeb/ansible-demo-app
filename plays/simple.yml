@@ -1,5 +1,5 @@
 ---
-# This playbook deploys a simple app and standalone Tomcat 7 server. 
+# This playbook deploys a simple app and standalone Tomcat server. 
 - name: Deploy Demo App
   hosts: all 
   become: yes
@@ -9,7 +9,7 @@
     app_stage: snapshot
 
   roles:
-    - tomcat
+    - andyneeb.tomcat
   
   tasks:
     - name: Check if war already deployed
