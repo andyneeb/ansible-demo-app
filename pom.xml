@@ -5,7 +5,7 @@
 
   <groupId>com.aneeb</groupId>
   <artifactId>demoapp</artifactId>
-  <version>2.0</version>
+  <version>2.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>Demo App</name>
@@ -27,7 +27,7 @@
 
   <scm>
     <connection>scm:git:git@github.com:andyneeb/ansible-demo-app.git</connection>
-    <tag>demoapp-2.0</tag>
+    <tag>demoapp-1.4</tag>
   </scm> 
 
 <distributionManagement>
