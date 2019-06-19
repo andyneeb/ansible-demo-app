@@ -7,7 +7,7 @@ node ('master') {
 
    stage('Build') {
       withEnv(["MVN_HOME=$mvnHome"]) {
-        sh '"$MVN_HOME/bin/mvn" -B release:prepare'
+        sh '"$MVN_HOME/bin/mvn" clean -B release:prepare'
       }
    }
 
