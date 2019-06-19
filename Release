@@ -1,6 +1,23 @@
 node ('master') {
+   def mvnHome
+   stage('Preparation') {
+      git 'https://github.com/andyneeb/ansible-demo-app.git'
+      mvnHome = tool 'M3'
+   }
+
+   stage('Build') {
+      withEnv(["MVN_HOME=$mvnHome"]) {
+        sh '"$MVN_HOME/bin/mvn" -B release:prepare'
+      }
+   }
+
+   stage('Package') {
+      withEnv(["MVN_HOME=$mvnHome"]) {
+        sh '"$MVN_HOME/bin/mvn" release:perform'
+      }
+   }
+
    stage('Release') {
-      //gitRelease = sh(script: 'lastversion andyneeb/ansible-demo-app', , returnStdout: true).trim()
       sh 'tower-cli config host tower.andyneeb.com'
       sh 'tower-cli config verify_ssl false'
       sh 'tower-cli config username jenkins'
