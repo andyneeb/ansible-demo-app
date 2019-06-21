@@ -1,16 +1,16 @@
 ---
 # This playbook deploys a simple app and standalone Tomcat server. 
 - name: Deploy Demo App
-  hosts: all 
+  hosts: all
   become: yes
-  
+
   vars:
     app_release: 1.0-SNAPSHOT
     app_stage: snapshot
 
   roles:
     - andyneeb.tomcat
-  
+
   tasks:
     - name: Check if war already deployed
       stat: path=/opt/tomcat/webapps/demoapp.war
@@ -19,17 +19,17 @@
     - name: Undeploy war file
       command: mv /opt/tomcat/webapps/demoapp.war /tmp
       when: demoapp_stat.stat.exists
-    
+
     - name: Pause to let the app undeploy
       pause: seconds=10
       when: demoapp_stat.stat.exists
-    
+
     - name: Deploy war file from Artifactory
       get_url: url=http://95.216.233.139:8081/artifactory/libs-{{ app_stage }}-local/com/aneeb/demoapp/{{ app_release }}/demoapp-{{ app_release }}.war dest=/opt/tomcat/webapps/demoapp.war force=yes
       register: war_downloaded
 
     - name: Set correct permissions
-      file: 
+      file:
         path: "/opt/tomcat/webapps/demoapp.war"
         owner: tomcat
         group: tomcat
