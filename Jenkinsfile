@@ -24,7 +24,7 @@ node ('master') {
       sh 'tower-cli config username jenkins'
       sh 'tower-cli config password jenkins'
       withEnv(["MVN_VERSION=$mvnVersion"]) {
-          sh 'tower-cli job launch -J 58 --limit=dev --extra-vars=instance_name=dev --extra-vars=app_release=${MVN_VERSION} --extra-vars=app_stage=snapshot --monitor'
+          sh 'tower-cli workflow_job launch -J 58 --limit=dev --extra-vars=instance_name=dev --extra-vars=app_release=${MVN_VERSION} --extra-vars=app_stage=snapshot --monitor'
          }      
     }
 }
