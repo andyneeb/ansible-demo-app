@@ -7,7 +7,7 @@
 %>
 <html>
 <body>
-<h2>Hallo Welt!</h2>
+<h2>Hello World!</h2>
 <h6>App Version: <%= mainVer %></h6>
 <!-- <img src="munich.jpg" alt="Image of Munich" width=100% ></img> -->
 <img src="logo.png" alt="Ansible Logo" height=60% ></img>
