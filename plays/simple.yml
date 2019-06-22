@@ -38,7 +38,7 @@
 
     - name: check for proper response
       uri:
-        url: http://localhost:{{ tomcat_http_port }}/demoapp
+        url: http://stage.andyneeb.com:{{ tomcat_http_port }}/demoapp
         return_content: yes
       register: result
       until: 'app_release in result.content'
