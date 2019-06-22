@@ -7,6 +7,7 @@
   vars:
     app_release: 1.0-SNAPSHOT
     app_stage: snapshot
+    tomcat_http_port: 8080
 
   roles:
     - andyneeb.tomcat
@@ -34,3 +35,12 @@
         owner: tomcat
         group: tomcat
       when: war_downloaded.changed
+
+    - name: check for proper response
+      uri:
+        url: http://localhost:{{ tomcat_http_port }}/demoapp
+        return_content: yes
+      register: result
+      until: '"{{ app_release }}" in result.content'
+      retries: 10
+      delay: 1
