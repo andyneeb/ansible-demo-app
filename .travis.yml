@@ -18,11 +18,11 @@ cache:
 
 deploy:
   - provider: script
-    script: "$BLT_DIR/.travis/deploy_production.sh"
+    script: "chmod +x .travis/deploy_production.sh && .travis/deploy_production.sh"
     on:
       branch: master
   - provider: script
-    script: "$BLT_DIR/.travis/deploy_staging.sh"
+    script: "chmod +x .travis/deploy_staging.sh && .travis/deploy_staging.sh"
     on:
       all_branches: true
       condition: $TRAVIS_BRANCH != master
