@@ -18,7 +18,7 @@ cache:
 
 deploy:
   - provider: script
-    script: "tower-cli config host tower.andyneeb.com && tower-cli config verify_ssl false && tower-cli config username $TOWER_USER && tower-cli config password $TOWER_PASSWORD && "
+    script: "tower-cli config host tower.andyneeb.com && tower-cli config verify_ssl false && tower-cli config username $TOWER_USER && tower-cli config password $TOWER_PASSWORD && pwd"
     skip_cleanup: true
     on:
       branch: master
