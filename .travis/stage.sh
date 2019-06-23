@@ -2,10 +2,10 @@
 
 set -e
 
-echo "Ensuring that pom  matches $TRAVIS_TAG"
-mvn org.codehaus.mojo:versions-maven-plugin:2.5:set -DnewVersion=$TRAVIS_TAG
+echo "Ensuring that pom matches $TRAVIS_BRANCH"
+mvn org.codehaus.mojo:versions-maven-plugin:2.5:set -DnewVersion=$TRAVIS_BRANCH
 
-echo "Uploading to oss repo and GitHub"
+echo "Uploading to Artifactory"
 mvn deploy -DskipTests=true --batch-mode --update-snapshots
 
 echo "Deploying to Stage"
