@@ -18,7 +18,7 @@ cache:
 
 deploy:
   - provider: script
-    script: sh $TRAVIS_BUILD/.travis/deploy_production.sh
+    script: "tower-cli config host tower.andyneeb.com && tower-cli config verify_ssl false && tower-cli config username admin && tower-cli config password R3dH4t"
     skip_cleanup: true
     on:
       branch: master
