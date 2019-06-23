@@ -2,7 +2,17 @@ language: java
 jdk:
   - openjdk8
 
-script:
-  - mvn validate
-  - mvn compile
-  - mvn test
+install: true
+scrips: ./mvnw clean install
+
+cache:
+  directories:
+  - $HOME/.m2
+  - bash <(curl -s https://codecov.io/bash)
+
+deploy:
+  -
+   on:
+     branch: master
+   provider: tower
+   
