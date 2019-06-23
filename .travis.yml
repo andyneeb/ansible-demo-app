@@ -1,1 +1,5 @@
 language: java
+
+notifications:
+  email:
+    - aneeb@redhat.com
