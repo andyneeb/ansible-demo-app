@@ -40,6 +40,6 @@
         url: http://localhost:{{ tomcat_http_port }}/demoapp
         return_content: yes
       register: result
-      until: "{{ app_release }}" in result.content
+      until: "Version: {{ app_release }}" in result.content
       retries: 60
       delay: 1
