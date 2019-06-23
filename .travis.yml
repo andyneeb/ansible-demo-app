@@ -3,7 +3,8 @@ jdk:
   - openjdk8
 
 install: true
-script: 
+script:
+  - cp .travis.settings.xml $HOME/.m2/settings.xml 
   - mvn clean install
   - bash <(curl -s https://codecov.io/bash)
   - mvn deploy
