@@ -17,9 +17,10 @@ cache:
 
 deploy:
    provider: script
-   script: travis/release.sh
+   script: .travis/stage.sh
    skip_cleanup: true
    on:
+    all_branches: true
+    condition: $TRAVIS_BRANCH != master
     repo: andyneeb/ansible-demo-app
-    tags: true
     jdk: openjdk8
