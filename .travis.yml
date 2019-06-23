@@ -2,7 +2,20 @@ language: java
 jdk:
   - openjdk8
 
+install: true
 script:
-  - mvn validate
-  - mvn compile
-  - mvn test
+  - cp .travis.settings.xml $HOME/.m2/settings.xml 
+  - mvn clean install
+  - bash <(curl -s https://codecov.io/bash)
+  - mvn deploy
+
+cache:
+  directories:
+  - $HOME/.m2
+
+deploy:
+  -
+   on:
+     branch: master
+   provider: tower
+   
