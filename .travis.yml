@@ -18,11 +18,11 @@ cache:
 
 deploy:
   - provider: script
-    script: ".travis/deploy_production.sh"
+    script: "sh .travis/deploy_production.sh"
     on:
       branch: master
   - provider: script
-    script: ".travis/deploy_staging.sh"
+    script: "sh .travis/deploy_staging.sh"
     on:
       all_branches: true
       condition: $TRAVIS_BRANCH != master
