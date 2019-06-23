@@ -3,12 +3,14 @@ jdk:
   - openjdk8
 
 install: true
-scrips: ./mvnw clean install
+scrips: 
+  - ./mvnw clean install
+  - bash <(curl -s https://codecov.io/bash)
+  - ./mvnw deploy
 
 cache:
   directories:
   - $HOME/.m2
-  - bash <(curl -s https://codecov.io/bash)
 
 deploy:
   -
