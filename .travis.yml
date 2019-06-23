@@ -18,11 +18,13 @@ cache:
 
 deploy:
   - provider: script
-    script: "chmod +x .travis/deploy_production.sh && .travis/deploy_production.sh"
+    script: sh $TRAVIS_BUILD/.travis/deploy_production.sh
+    skip_cleanup: true
     on:
       branch: master
   - provider: script
-    script: "chmod +x .travis/deploy_staging.sh && .travis/deploy_staging.sh"
+    script: sh $TRAVIS_BUILD/.travis/deploy_staging.sh
+    skip_cleanup: true
     on:
       all_branches: true
       condition: $TRAVIS_BRANCH != master
