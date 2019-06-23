@@ -3,7 +3,7 @@ jdk:
   - openjdk8
 
 install: true
-scrips: 
+script: 
   - ./mvnw clean install
   - bash <(curl -s https://codecov.io/bash)
   - ./mvnw deploy
