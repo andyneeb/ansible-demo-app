@@ -25,8 +25,9 @@
   </dependencies>
 
   <scm>
+    <url>https://github.com/andyneeb/ansible-demo-app</url>
     <connection>scm:git:git@github.com:andyneeb/ansible-demo-app.git</connection>
-    <tag>HEAD</tag>
+    <developerConnection>scm:git:git@github.com:andyneeb/ansible-demo-app.git</developerConnection>
   </scm> 
 
 <distributionManagement>

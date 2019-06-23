@@ -8,23 +8,18 @@ install:
 
 script:
   - cp .travis.settings.xml $HOME/.m2/settings.xml 
-  - mvn clean install
+  - mvn clean verify
   - bash <(curl -s https://codecov.io/bash)
-  - mvn deploy
 
 cache:
   directories:
   - $HOME/.m2
 
 deploy:
-  - provider: script
-    script: "tower-cli config host tower.andyneeb.com && tower-cli config verify_ssl false && tower-cli config username $TOWER_USER && tower-cli config password $TOWER_PASSWORD && pwd"
-    skip_cleanup: true
-    on:
-      branch: master
-  - provider: script
-    script: sh $TRAVIS_BUILD/.travis/deploy_staging.sh
-    skip_cleanup: true
-    on:
-      all_branches: true
-      condition: $TRAVIS_BRANCH != master
+   provider: script
+   script: travis/release.sh
+   skip_cleanup: true
+   on:
+    repo: andyneeb/ansible-demo-app
+    tags: true
+    jdk: openjdk8
