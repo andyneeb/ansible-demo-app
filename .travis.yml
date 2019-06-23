@@ -16,11 +16,16 @@ cache:
   - $HOME/.m2
 
 deploy:
-   provider: script
+ - provider: script
    script: .travis/stage.sh
    skip_cleanup: true
    on:
     all_branches: true
     condition: $TRAVIS_BRANCH != master
-    repo: andyneeb/ansible-demo-app
-    jdk: openjdk8
+ - provider: script
+   script: .travis/deploy.sh
+   skip_cleanup: true
+   on:
+    branch: master
+
+
