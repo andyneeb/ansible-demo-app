@@ -2,6 +2,9 @@ language: java
 jdk:
   - openjdk8
 
+notifications:
+  slack: ci-cd-demo:H565NR29AZLfsgsztMJG1xK3
+
 install:
 
   - sudo pip install ansible-tower-cli
