@@ -18,8 +18,9 @@ tower-cli config password $TOWER_PASSWORD
 echo "Delete old latest-1"
 tower-cli job_template delete --name "Release Demo App (latest-1)"
 
-echo "Rename Current to N-1"
+echo "Move Current to N-1"
 tower-cli job_template copy $(tower-cli job_template get --name "Release Demo App (latest)" -f id) --new-name "Release Demo App (latest-1)"
+tower-cli role grant --type "execute" --user "release_manager" --job-template "Release Demo App (latest-1)"
 
 echo "Delete old latest"
 tower-cli job_template delete --name "Release Demo App (latest)"
