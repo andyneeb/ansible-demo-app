@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -e
-export COMMIT=${TRAVIS_COMMIT::8}
+export COMMIT=${TRAVIS_COMMIT::7}
 
 echo "Ensuring that pom matches $COMMIT"
 mvn org.codehaus.mojo:versions-maven-plugin:2.5:set -DnewVersion=$COMMIT
