@@ -14,7 +14,7 @@ tower-cli config host $TOWER_URL
 tower-cli config verify_ssl false
 tower-cli config username $TOWER_USER
 tower-cli config password $TOWER_PASSWORD
-tower-cli job_template create --name "Release Demo App v$COMMIT" --project "Demo App Repo" --playbook "plays/simple.yml" --inventory "OpenStack Prod" --extra-vars=app_release=$COMMIT --extra-vars=instance_name=all --ask-limit-on-launch TRUE --credential "RHEL Cloud User Secure"
+tower-cli job_template create --name "Release Demo App v$COMMIT" --project "Demo App Repo" --playbook "plays/simple.yml" --inventory "OpenStack Prod" --extra-vars=app_release="$COMMIT" --extra-vars=instance_name=all --ask-limit-on-launch TRUE --credential "RHEL Cloud User Secure"
 tower-cli job_template associate_notification_template --job-template "Release Demo App v$COMMIT" --notification-template 1 --status=error
 tower-cli job_template associate_notification_template --job-template "Release Demo App v$COMMIT" --notification-template 1 --status=success
 tower-cli role grant --type "execute" --user "release_manager" --job-template "Release Demo App v$COMMIT"
