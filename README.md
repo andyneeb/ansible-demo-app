@@ -59,4 +59,24 @@ Below is a high-level diagram of the main components.
     ├── README.md                 # This file
     └── pom.xml                   # Maven project definition
 
+### Instructions / Customizations
+
+1.) Set the following variables on your travis build (in web ui)
+- ARTY_PASSWORD=<PASSWORD>: Password for your repository (Artifactory / Nexus / ...)
+- ARTY_USERNAME=<USER>: User for your repository (Artifactory / Nexus / ...)
+- PYTHONWARNINGS=IGNORE: To prevent python deprecation warnings clutter build logs
+- TOWER_PASSWORD=<PASSWORD>: Ansible Tower password
+- TOWER_URL=URL: URL of your Tower instance 
+- TOWER_USER=<USER>: Ansible Tower user
+
+2.) Also in build setting in Travis Web UI disable 'Build pushed pull requests'. No need to start build on PR for demo.
+
+3.) Configure your repository URL in .travis/settings.xml. (Will make this a var in a future version)
+
+4.) Setup project for required playbooks in Tower. Everything is available at https://github.com/andyneeb/ansible-demo-infra but will need customization if you are not running on OpenStack. If you do, you still need to set propper vars for your OpenStack environment. Your mileage might vary. If you run on OpenStack I trust you know what to do.
+
+5.) Import all tower objects from ./tower. Easiest way is to use tower-cli like this:
+
+```
+tower-cli send ./tower
 
