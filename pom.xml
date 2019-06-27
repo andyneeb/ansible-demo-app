@@ -33,8 +33,8 @@
 <distributionManagement>
     <repository>
         <id>central</id>
-        <name>artifactory.novalocal-releases</name>
-        <url>http://95.216.233.139:8081/artifactory/libs-release-local</url>
+        <name>libs-release</name>
+        <url>${env.REPO_URL}</url>
     </repository>
 </distributionManagement>
 
