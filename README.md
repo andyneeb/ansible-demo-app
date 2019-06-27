@@ -17,6 +17,10 @@ This demo has been created to demonstrate how Ansible Tower can easily be integr
 - Slack: Notifaction on build & deployment status
 - Red hat Ansible Tower: Automated provisioning & teardown of test env, deployment, release management, security, role based access
 
+Below is a high-level diagram of the main components.
+
+![](../images/overview.png)
+
 # High Level Demo Flow
 
 - Checkout branch / make modifications / push branch to origin
