@@ -14,26 +14,30 @@ This demo has been created to demonstrate how Ansible Tower can easily be integr
 - Github (this repo): SCM for code, playbooks, config, pipeline definition
 - Artifactory: Repository for packaged binaries (single war in this case)
 - Travis CI: Continuous Integration / Build system
+- Slack: Notifaction on build & deployment status
 - Red hat Ansible Tower: Automated provisioning & teardown of test env, deployment, release management, security, role based access
 
 # High Level Demo Flow
 
-- Checkout branch
-- Make modifications
-- Push branch to origin
+- Checkout branch / make modifications / push branch to origin
 - Create PR (your branch -> master)
-- Push on branch (!= master) will trigger test pipeline
-- CI server runs Compile, unit test, code coverage, pushes artifacts (tagged with current dev branch) to repo
-- On success CI server triggers Ansible Tower
-- Tower will create test environment (rhel7 system, add to loadbalancer, subscribe)
-- Tower will install java8, tomcat8 on test env
-- Tower will deploy artefact (war) to test and do smoke test
+- Push on any branch !=master will trigger test pipeline
+- CI server runs build, unit test, code coverage, package, pushes artifacts (tagged with current dev branch) to repo
+- On success CI server triggers workflow in Ansible Tower
+- Tower creates test environment: single rhel7 system, add to loadbalancer, subscribe, install java & tomcat
+- Tower will then deploy artefact (war) to test env and do smoke test
 - On success PR can be merged
 - Merge to master will trigger prod pipeline
-- CI server again runs all test, pushes artifacts (now tagged with current commit id) to repo
+- CI server again runs build, all test, pushes artifacts (now tagged with current commit id) to repo
 - On success CI server triggers Ansible Tower
 - Tower will create new release job pointing to current artifacts and rotate previous release to N-1 for possible rollback
+- Tower will setup role based access to release job
+- Tower will configure slack notifications
 - Release manager will eventually log into Tower and push current to production using encrypted SSH keys and password
+
+# Repo structure / available assets
+
+- tbd
 
 
 
