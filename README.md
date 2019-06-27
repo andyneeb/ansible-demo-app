@@ -4,16 +4,16 @@
 
 A simple Java Hello World written primarily to showcase Red Hat Ansible Tower.
 
-#Overview
+# Overview
 
 Ansible Tower is - among other things - an API to make Ansible playbooks easily consumable and therefore foster collaboration and reuse of playbooks / roles / modules.
 
 This demo has been created to demonstrate how Ansible Tower can easily be integrated into a typical enterprise toolchain. My environment currently uses the following building blocks. Those are mere examples and should easily be replaceable by the usual suspects (ie. Github -> Gitlab, Travis -> Jenkins, Artifactory -> Nexus, Slack -> Mattermost ...)
 
-- Red Hat OpenStack 13 (Queens): IaaS layer providing compute, network, storage and loadbalancing
-- Github (this repo): SCM for code, playbooks, config, pipeline definiton
+- Red Hat OpenStack 13 (Queens): IaaS layer providing compute, network, storage and loadbalancer
+- Github (this repo): SCM for code, playbooks, config, pipeline definition
 - Artifactory: Repository for packaged binaries (single war in this case)
-- Travis CI: Continous Integration / Build system
+- Travis CI: Continuous Integration / Build system
 - Red hat Ansible Tower: Automated provisioning & teardown of test env, deployment, release management, security, role based access
 
 # High Level Demo Flow
