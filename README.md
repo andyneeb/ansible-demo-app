@@ -50,11 +50,12 @@ Below is a high-level diagram of the main components.
     │   └── stage.sh                # Staging script
     ├── images                    # Embedded images for readme / docs
     ├── plays                     
-    │   ├── roles                   # Ansible Roles
+    │   ├── roles                   # Ansible roles
     │   │   └── requirements.yml      # Requirements definition (tomcat)
     │   └── simple.yml              # Playbook (app + tomcat)
     ├── src/main/webapp           # Source files
-    ├── .travis.yml               # Travis-CI Pipeline definition
+    ├── tower                     # Tower objects (jobs, workflows, etc.)
+    ├── .travis.yml               # Travis-CI pipeline definition
     ├── README.md                 # This file
     └── pom.xml                   # Maven project definition
 

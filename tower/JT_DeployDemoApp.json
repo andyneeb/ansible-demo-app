@@ -1,0 +1,71 @@
+[
+  {
+    "credential": "RHEL Cloud User", 
+    "name": "Deploy Demo App", 
+    "asset_relation": {
+      "extra_credentials": [], 
+      "notification_templates_error": [
+        "Slack"
+      ], 
+      "notification_templates_success": [
+        "Slack"
+      ], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": [
+            "dev_ops"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "labels": [], 
+      "schedules": [], 
+      "survey_spec": {
+        "name": "", 
+        "description": "", 
+        "spec": [
+          {
+            "question_name": "Instance Name", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "instance_name", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "", 
+            "choices": ""
+          }, 
+          {
+            "question_name": "Release", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "app_release", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "1", 
+            "choices": ""
+          }
+        ]
+      }
+    }, 
+    "project": "Demo App Repo", 
+    "inventory": "OpenStack", 
+    "asset_type": "job_template", 
+    "survey_enabled": true, 
+    "playbook": "plays/simple.yml"
+  }
+]

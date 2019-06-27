@@ -1,0 +1,120 @@
+[
+  {
+    "inventory": 2, 
+    "asset_relation": {
+      "labels": [], 
+      "schedules": [], 
+      "workflow_nodes": [
+        {
+          "name": "node0", 
+          "unified_job_type": "job", 
+          "success_nodes": [
+            "node1"
+          ], 
+          "failure_nodes": [], 
+          "unified_job_name": "Provision Instance", 
+          "always_nodes": []
+        }, 
+        {
+          "name": "node1", 
+          "unified_job_type": "job", 
+          "success_nodes": [
+            "node2"
+          ], 
+          "failure_nodes": [], 
+          "unified_job_name": "Add Instance to LoadBalancer Pool", 
+          "always_nodes": []
+        }, 
+        {
+          "name": "node2", 
+          "unified_job_type": "inventory_update", 
+          "success_nodes": [
+            "node3"
+          ], 
+          "failure_nodes": [], 
+          "unified_job_name": "Admin Project", 
+          "always_nodes": []
+        }, 
+        {
+          "name": "node3", 
+          "unified_job_type": "job", 
+          "success_nodes": [
+            "node4"
+          ], 
+          "failure_nodes": [], 
+          "unified_job_name": "Register Host with RHN", 
+          "always_nodes": []
+        }, 
+        {
+          "name": "node4", 
+          "unified_job_type": "job", 
+          "success_nodes": [], 
+          "failure_nodes": [], 
+          "unified_job_name": "Deploy Demo App", 
+          "always_nodes": []
+        }
+      ], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "survey_spec": {
+        "name": "", 
+        "description": "", 
+        "spec": [
+          {
+            "question_name": "Instance Name", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "instance_name", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "dev", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Instance Image", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "instance_image", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "rhel76", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Version", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "app_release", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "1", 
+            "choices": ""
+          }
+        ]
+      }
+    }, 
+    "asset_type": "workflow", 
+    "survey_enabled": true, 
+    "name": "CI / CD - Deploy App To Stage"
+  }
+]
