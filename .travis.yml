@@ -2,6 +2,14 @@ language: java
 jdk:
   - openjdk8
 
+env:
+  global:
+    - PYTHONWARNINGS=ignore
+    - REPO_URL=http://95.216.233.139:8081/artifactory/libs-release
+    - REPO_USER=admin
+    - TOWER_URL=tower.andyneeb.com
+    - TOWER_USER=admin
+
 notifications:
   slack: ci-cd-demo:H565NR29AZLfsgsztMJG1xK3
 
