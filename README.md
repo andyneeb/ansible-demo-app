@@ -61,25 +61,24 @@ Below is a diagram of the main components.
 
 ### Setup Instructions / Customizations
 To run this demo you will at minimum need:
-- Programable IaaS layer that can provide compute/storage/network and ingrees routing / load balancer. All my playbooks asume an OpenStack API (Queens tested, newer *should* work)
+- Programmable IaaS layer that can provide compute/storage/network and ingress routing / load balancer. All my playbooks asume an OpenStack API (Queens tested, newer *should* work)
 - A maven repository (Nexus / Artifactory / ...). I provide a simple playbook to setup Artifactory at https://github.com/andyneeb/ansible-demo-infra/blob/master/artifactory.yml
 - Ansible Tower instance. A playbook & roles to provision Tower on OpenStack together with instructions is available at https://github.com/ktenzer/ansible-tower-on-openstack-123
 - If you don't use Travis-CI you need to build your own pipeline files. Your mileage might vary.
 
 Assuming you follow my setup, here is what you need to do:
 
-1.) Set the following variables on your travis build (in web ui)
+1.) Set the variables in travis.yml for your env
 - REPO_URL: Repository URL (Artifactory / Nexus / ...)
 - REPO_USER: User for your repository
 - REPO_PASSWORD: Password for your repository
-- PYTHONWARNINGS: Set to IGNORE to prevent python deprecation warnings clutter build logs
 - TOWER_URL: Tower instance URL
 - TOWER_USER: Tower user
 - TOWER_PASSWORD: Tower password
 
-2.) Also in build setting in Travis Web UI disable 'Build pushed pull requests'. No need to start another build on PR for demo.
+2.) Set repo_url in ./plays/simple.yml
 
-3.) Configure your repository URL in .travis/settings.xml. (Will make this a var in a future version)
+3.) In build setting in Travis Web UI disable 'Build pushed pull requests'. No need to start another build on PR for demo.
 
 4.) Setup project for required playbooks in Tower. Everything is available at https://github.com/andyneeb/ansible-demo-infra but will need heavy customization if you are not running on OpenStack. If you do, you still need to set propper vars for your OpenStack environment.
 
