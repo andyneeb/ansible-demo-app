@@ -1,0 +1,16 @@
+[
+  {
+    "notification_type": "slack", 
+    "organization": "Default", 
+    "notification_configuration": {
+      "channels": [
+        "#tower"
+      ], 
+      "token": "", 
+      "use_ssl": false, 
+      "use_tls": false
+    }, 
+    "asset_type": "notification_template", 
+    "name": "Slack"
+  }
+]
