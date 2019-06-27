@@ -6,6 +6,7 @@
 
   vars:
     app_release: 1.0
+    repo_url: http://95.216.233.139:8081/artifactory/libs-release
     tomcat_http_port: 8080
 
   roles:
@@ -25,7 +26,10 @@
       when: demoapp_stat.stat.exists
 
     - name: Deploy war file from Artifactory
-      get_url: url=http://95.216.233.139:8081/artifactory/libs-release-local/com/aneeb/demoapp/{{ app_release }}/demoapp-{{ app_release }}.war dest=/opt/tomcat/webapps/demoapp.war force=yes
+      get_url: 
+        url: "{{ repo_url }}/com/aneeb/demoapp/{{ app_release }}/demoapp-{{ app_release }}.war"
+        dest: /opt/tomcat/webapps/demoapp.war
+        force: yes
       register: war_downloaded
 
     - name: Set correct permissions

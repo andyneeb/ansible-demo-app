@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
-      <username>${env.ARTY_USERNAME}</username>
-      <password>${env.ARTY_PASSWORD}</password>
+      <username>${env.REPO_USER}</username>
+      <password>${env.REPO_PASSWORD}</password>
       <id>central</id>
     </server>
   </servers>
@@ -17,13 +17,7 @@
           </snapshots>
           <id>central</id>
           <name>libs-release</name>
-          <url>http://95.216.233.139:8081/artifactory/libs-release</url>
-        </repository>
-        <repository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>libs-snapshot</name>
-          <url>http://95.216.233.139:8081/artifactory/libs-snapshot</url>
+          <url>${env.REPO_URL}</url>
         </repository>
       </repositories>
       <pluginRepositories>
@@ -33,13 +27,7 @@
           </snapshots>
           <id>central</id>
           <name>libs-release</name>
-          <url>http://95.216.233.139:8081/artifactory/libs-release</url>
-        </pluginRepository>
-        <pluginRepository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>libs-snapshot</name>
-          <url>http://95.216.233.139:8081/artifactory/libs-snapshot</url>
+          <url>${env.REPO_URL}</url>
         </pluginRepository>
       </pluginRepositories>
       <id>artifactory</id>

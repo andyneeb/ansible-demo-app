@@ -69,12 +69,13 @@ To run this demo you will at minimum need:
 Assuming you follow my setup, here is what you need to do:
 
 1.) Set the following variables on your travis build (in web ui)
-- ARTY_PASSWORD: Password for your repository (Artifactory / Nexus / ...)
-- ARTY_USERNAME: User for your repository (Artifactory / Nexus / ...)
+- REPO_URL: Repository URL (Artifactory / Nexus / ...)
+- REPO_USER: User for your repository
+- REPO_PASSWORD: Password for your repository
 - PYTHONWARNINGS: Set to IGNORE to prevent python deprecation warnings clutter build logs
-- TOWER_PASSWORD: Ansible Tower password
-- TOWER_URL: URL of your Tower instance 
-- TOWER_USER: Ansible Tower user
+- TOWER_URL: Tower instance URL
+- TOWER_USER: Tower user
+- TOWER_PASSWORD: Tower password
 
 2.) Also in build setting in Travis Web UI disable 'Build pushed pull requests'. No need to start another build on PR for demo.
 
