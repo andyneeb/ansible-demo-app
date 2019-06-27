@@ -8,7 +8,7 @@ A simple Java Hello World written primarily to showcase Red Hat Ansible Tower.
 
 Ansible Tower is - among other things - an API to make Ansible playbooks easily consumable and therefore foster collaboration and reuse of playbooks / roles / modules.
 
-This demo has been created to demonstrate how Ansible Tower can easily be integrated into a typical enterprise toolchain. My environment currently uses the following building blocks. Those are mere examples and should easily be replaceable by the usual suspects (ie. Github -> Gitlab, Travis -> Jenkins, Artifactory -> Nexus, Slack -> Mattermost ...)
+This demo has been created to demonstrate how Ansible Tower can easily be integrated into a typical enterprise toolchain. My environment currently uses the following building blocks. Those are mere examples and should easily be replaceable by the usual suspects (ie. Github -> Gitlab, Travis -> Jenkins, Artifactory -> Nexus, Slack -> Mattermost ...).
 
 - Red Hat OpenStack 13 (Queens): IaaS layer providing compute, network, storage and loadbalancer
 - Github (this repo): SCM for code, playbooks, config, pipeline definition
@@ -17,9 +17,9 @@ This demo has been created to demonstrate how Ansible Tower can easily be integr
 - Slack: Notifaction on build & deployment status
 - Red hat Ansible Tower: Automated provisioning & teardown of test env, deployment, release management, security, role based access
 
-Below is a high-level diagram of the main components.
+Below is a diagram of the main components.
 
-![](../images/overview.png)
+![](./images/overview.png)
 
 # High Level Demo Flow
 
@@ -59,21 +59,28 @@ Below is a high-level diagram of the main components.
     ├── README.md                 # This file
     └── pom.xml                   # Maven project definition
 
-### Instructions / Customizations
+### Setup Instructions / Customizations
+To run this demo you will at minimum need:
+- Programable IaaS layer that can provide compute/storage/network and ingrees routing / load balancer. All my playbooks asume an OpenStack API (Queens tested, newer *should* work)
+- A maven repository (Nexus / Artifactory / ...). I provide a simple playbook to setup Artifactory at https://github.com/andyneeb/ansible-demo-infra/blob/master/artifactory.yml
+- Ansible Tower instance. A playbook & roles to provision Tower on OpenStack together with instructions is available at https://github.com/ktenzer/ansible-tower-on-openstack-123
+- If you don't use Travis-CI you need to build your own pipeline files. Your mileage might vary.
+
+Assuming you follow my setup, here is what you need to do:
 
 1.) Set the following variables on your travis build (in web ui)
-- ARTY_PASSWORD=<PASSWORD>: Password for your repository (Artifactory / Nexus / ...)
-- ARTY_USERNAME=<USER>: User for your repository (Artifactory / Nexus / ...)
-- PYTHONWARNINGS=IGNORE: To prevent python deprecation warnings clutter build logs
-- TOWER_PASSWORD=<PASSWORD>: Ansible Tower password
-- TOWER_URL=URL: URL of your Tower instance 
-- TOWER_USER=<USER>: Ansible Tower user
+- ARTY_PASSWORD: Password for your repository (Artifactory / Nexus / ...)
+- ARTY_USERNAME: User for your repository (Artifactory / Nexus / ...)
+- PYTHONWARNINGS: Set to IGNORE to prevent python deprecation warnings clutter build logs
+- TOWER_PASSWORD: Ansible Tower password
+- TOWER_URL: URL of your Tower instance 
+- TOWER_USER: Ansible Tower user
 
-2.) Also in build setting in Travis Web UI disable 'Build pushed pull requests'. No need to start build on PR for demo.
+2.) Also in build setting in Travis Web UI disable 'Build pushed pull requests'. No need to start another build on PR for demo.
 
 3.) Configure your repository URL in .travis/settings.xml. (Will make this a var in a future version)
 
-4.) Setup project for required playbooks in Tower. Everything is available at https://github.com/andyneeb/ansible-demo-infra but will need customization if you are not running on OpenStack. If you do, you still need to set propper vars for your OpenStack environment. Your mileage might vary. If you run on OpenStack I trust you know what to do.
+4.) Setup project for required playbooks in Tower. Everything is available at https://github.com/andyneeb/ansible-demo-infra but will need heavy customization if you are not running on OpenStack. If you do, you still need to set propper vars for your OpenStack environment.
 
 5.) Import all tower objects from ./tower. Easiest way is to use tower-cli like this:
 
