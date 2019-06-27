@@ -41,7 +41,21 @@ Below is a high-level diagram of the main components.
 
 # Repo structure / available assets
 
-- tbd
+### Directory layout
 
+    .
+    ├── .travis                   
+    │   ├── release.sh              # Release script
+    │   ├── settings.xml            # Maven settings
+    │   └── stage.sh                # Staging script
+    ├── images                    # Embedded images for readme / docs
+    ├── plays                     
+    │   ├── roles                   # Ansible Roles
+    │   │   └── requirements.yml      # Requirements definition (tomcat)
+    │   └── simple.yml              # Playbook (app + tomcat)
+    ├── src/main/webapp           # Source files
+    ├── .travis.yml               # Travis-CI Pipeline definition
+    ├── README.md                 # This file
+    └── pom.xml                   # Maven project definition
 
 
