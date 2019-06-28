@@ -1,40 +1,36 @@
 language: java
 jdk:
-  - openjdk8
-
+- openjdk8
 env:
   global:
-    - PYTHONWARNINGS=ignore
-    - REPO_URL=http://95.216.233.139:8081/artifactory/libs-release
-    - REPO_USER=admin
-    - TOWER_URL=tower.andyneeb.com
-    - TOWER_USER=admin
+  - PYTHONWARNINGS=ignore
+  - REPO_URL=http://95.216.233.139:8081/artifactory/libs-release
+  - REPO_USER=admin
+  - TOWER_URL=tower.andyneeb.com
+  - TOWER_USER=admin
+  - secure: eAO5wQWYfUdzTkrWCgwFyWIosPDLyvwe1HJD+UllYTJJPLMblTXAl+mlgdlOdttoMR+7U+uvMJBEiFqMXUe1GNDo2RKP4tCS0b2AYLHBAHutjaE7fNe6/55gpXQFgyzWq9i9cEbiClgHceuFcJf91RkdwCyB6IEZ7NGn52QOwvRJDwSOHrq3P54GamkIG1JsTcXN9/E7nL8/30W1tbIxs6AZKCzx/mLGRR1UYJWU5Xs8oJdV4tIiBlIOcaJdTZLjIobXpcYahb+xGEPIFhZtFJUr9pIaPUM+wfgnIoMesTqWqDDwoSqgix4kg5XTafgy8ZY1aSEUOOy/6HMxHoczMteo+NgV+gskSVPKigbZv0SH6dUEGBE6tWh3QLE3iuVyZwnB3F1sWg1eedFBV1Oy1zs6MOvqdZumYNDw8j0aP2BLJCYiizb8Sq+A5q1m8gtRRbEofuRlQnXrOfn1ORIx0tfJQdn1NpaudWFQUBRo+QJe3hOFlX0lzHfeH3KvXsUXnnUY9zOPxvMRR1yhyi1mfQ4EjuRwk/QcfJ+OPmTPXOfpZoH6tSrSGekAGGpFXFAYH/svyBzseHm+Fgmy7rcHWmqpyfkSGahcPHe7i6+MOhDLMn80ceWdyG5VdZEPAlFdhlodmvMvqzeMMwnYstRduUHpUe4umFA+o1QK40UYutA=
+  - secure: aO0HrduSEAZ2CW9q6/pyq1w1nHABwl4UyOM4QXj/SH9EmUvF1a7oKr5dmjFlg/9MlTcn7EpBJLGtcO0FneYP0KOR2/zjGis+ixV0vHi/bIVo+++Hl3U/JZL4e6y1OXGYp5qiNfQFGRrHxGXZa+/B3/dJ85Kg0zshf4/BrqL2h3MAuArUl1GaElPbkwGEIHtrga3M+WcZyA8nQlDYHvWcW8yNWBhnsMI6DB7UHC0SM7ANqpj2O/wtrXQTN5guRNRm4jWdqZbv71kydwhJK3GfDAL7rZMQYQXazfMTVCRICLRhmPv0ihN/eyM/9Lt9oX5b4pHjBpGdzti3v6vnAjGLfOHoB/fIE1x2MWWxIUhlHVS7uhVgutxIr/x6wvaOt5lixflEpcP8On7eGOmXP3bKIRVBtVZp4QlJLWdqfzTD4Ko4zSHzhgCE+yAq0lNC5NGWrHjXYRP1xqYAbcUgp8JOK8zX1iOx1wgXjjvJ7/SXORds+kXy8bIiUowPtMWsziez05idN+FTGGZQa+TmLS0aiGpCC2XjcNfG8nVgIptn+5lucN5UxIi83aNZF+3Q3NaDvLAl24r7tX1N7opf0rXpaBT0rgmOH6JLU+i+dgNPBn4PnL5gzse6ywMeH2b4F3pxFfJhpTiL4o1DTfzpL13ShiMBBrKr5tPX+H3PA0DoO/Q=
 
 notifications:
   slack: ci-cd-demo:H565NR29AZLfsgsztMJG1xK3
-
 install:
-
-  - sudo pip install ansible-tower-cli
-
+- sudo pip install ansible-tower-cli
 script:
-  - cp .travis/settings.xml $HOME/.m2/settings.xml 
-  - mvn verify
-  - bash <(curl -s https://codecov.io/bash)
-
+- cp .travis/settings.xml $HOME/.m2/settings.xml
+- mvn verify
+- bash <(curl -s https://codecov.io/bash)
 cache:
   directories:
-  - $HOME/.m2
-
+  - "$HOME/.m2"
 deploy:
- - provider: script
-   script: .travis/stage.sh
-   skip_cleanup: true
-   on:
+- provider: script
+  script: ".travis/stage.sh"
+  skip_cleanup: true
+  on:
     all_branches: true
-    condition: $TRAVIS_BRANCH != master
- - provider: script
-   script: .travis/release.sh
-   skip_cleanup: true
-   on:
+    condition: "$TRAVIS_BRANCH != master"
+- provider: script
+  script: ".travis/release.sh"
+  skip_cleanup: true
+  on:
     branch: master
