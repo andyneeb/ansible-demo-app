@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/andyneeb/ansible-demo-app.svg?branch=master)](https://travis-ci.org/andyneeb/ansible-demo-app)
 
-A simple Java Hello World written primarily to showcase Red Hat Ansible Tower.
+A fully automated CI/CD pipeline and tooling developed to showcase Red Hat Ansible Tower.
 
 # Overview
 
